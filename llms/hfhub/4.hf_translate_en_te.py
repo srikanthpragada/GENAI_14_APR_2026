@@ -3,7 +3,7 @@ import keys
 
 model_id = "facebook/mbart-large-50-many-to-many-mmt"   
 #model_id = "sarvamai/sarvam-translate"
-#model_id = "facebook/facebook/nllb-200-distilled-600M"
+#model_id = "facebook/nllb-200-distilled-600M"
 client = InferenceClient(model=model_id, 
                          provider="hf-inference", 
                          token= keys.HUGGINGFACE_KEY)
