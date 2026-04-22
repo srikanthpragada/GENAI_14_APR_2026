@@ -4,7 +4,7 @@ import keys
 
 model_id = "openai/gpt-oss-120b"
 client = InferenceClient(model=model_id, 
-                         token= keys.HUGGINGFACE_KEY)
+                         token = keys.HUGGINGFACE_KEY)
 
 template_str = """Write a {lang} function for the following requirement:
 {text}
