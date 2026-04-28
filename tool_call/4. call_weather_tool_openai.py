@@ -35,11 +35,10 @@ messages.append(response)  # Add model response (AIMessage)
 # it does NOT call the tool itself
 
 if len(response.tool_calls) > 0:
-    tool = response.tool_calls[0]  # get first tool to call
-    chosen_function_name = tool["name"]
-    chosen_function = eval(chosen_function_name)  # convert name to function
+    tool_call = response.tool_calls[0]  # get first tool to call
+    chosen_function = eval(tool_call["name"])  # convert name to function
     # Call function with required args
-    tool_result = chosen_function.invoke(tool)
+    tool_result = chosen_function.invoke(tool_call)
     messages.append(tool_result)  # Add ToolMessage with results
 
     # Call LLM to get final result
