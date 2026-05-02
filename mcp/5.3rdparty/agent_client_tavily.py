@@ -29,7 +29,7 @@ async def process():
         response = await agent.ainvoke({"messages": "Who won IPL 2025? Just give team name."})
 
         for message in response["messages"]:
-                message.pretty_print()
+            message.pretty_print()
 
 
 asyncio.run(process())

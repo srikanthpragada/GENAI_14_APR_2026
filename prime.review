@@ -1,0 +1,52 @@
+Code Review for prime.py
+
+Overall: The code is functional and correctly identifies prime numbers. It's well-structured with a dedicated function for prime checking.
+
+Suggestions for Improvement:
+
+1.  Optimization for `is_prime` function:
+    The loop for checking divisibility currently goes up to `n // 2`. This can be optimized by checking only up to the square root of `n`. If a number `n` has a factor greater than `sqrt(n)`, it must also have a factor smaller than `sqrt(n)`.
+    
+    Revised loop range: `for i in range(2, int(n**0.5) + 1):`
+
+2.  Add Docstrings:
+    It's good practice to add a docstring to the `is_prime` function to explain its purpose, arguments, and what it returns.
+
+    Example:
+    ```python
+    def is_prime(n):
+        """
+        Checks if a given number is prime.
+
+        Args:
+            n (int): The number to check.
+
+        Returns:
+            bool: True if the number is prime, False otherwise.
+        """
+        # ... rest of the function
+    ```
+
+3.  Input Validation/Error Handling:
+    The current code assumes the user will always enter a valid integer. Consider adding a `try-except` block to handle potential `ValueError` if the user enters non-integer input, making the program more robust.
+
+    Example:
+    ```python
+    while True:
+        try:
+            num = int(input("Enter a number: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
+    ```
+
+4.  Minor Optimization for 2 and 3 (Optional but good practice):
+    You can handle `n=2` and `n=3` explicitly at the beginning of the `is_prime` function as they are prime, and this can slightly simplify the loop condition for other numbers.
+
+    ```python
+    if n <= 1:
+        return False
+    if n <= 3: # Handles 2 and 3
+        return True
+    # ... rest of the checks
+    ```
